@@ -57,15 +57,6 @@ fn main() {
         .parse::<f64>()
         .unwrap_or(80.0) / 100.0;
 
-    let words = read_input_file(&input_path).expect("Error: Failed to read the input file.");
-
-    let similarity_matrix = calculate_similarity_matrix(&words);
-
-    if let Err(e) = write_output_file(&output_path, &similarity_matrix, &words, min_match) {
-        eprintln!("Error writing output file: {}", e);
-        process::exit(1);
-    }
-
     let start = Instant::now(); // Start the timer
 
     let words = read_input_file(&input_path).expect("Error: Failed to read the input file.");
@@ -79,7 +70,6 @@ fn main() {
 
     println!("Time elapsed: {:?}", start.elapsed()); // Print out the elapsed time
 }
-
 
 /// Read the input file and return a vector of words.
 ///
@@ -119,7 +109,8 @@ fn read_input_file(input_path: &Path) -> Result<Vec<String>, Box<dyn std::error:
             return Err("Empty lines are not allowed in the input file".into());
         }
 
-        words.push(line);
+        let processed_line = line.to_lowercase().replace(" ", ""); // Preprocessing line
+        words.push(processed_line);
 
         progress_bar.inc(1);
     }
@@ -218,4 +209,3 @@ fn write_output_file(
 
     Ok(())
 }
-
