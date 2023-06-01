@@ -171,7 +171,7 @@ fn write_output_file(
     for pair in all_pairs {
         writeln!(
             writer,
-            "Row {}: {} ~ Row {}: {} | Similarity: {:.2}%",
+            "Row {}: {}\tRow {}: {}\tSimilarity: {:.2}%",
             pair.1,
             pair.2,
             pair.3,
