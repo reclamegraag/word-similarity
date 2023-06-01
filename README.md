@@ -55,7 +55,7 @@ apple orange banana
 The output file contains a similarity matrix with the calculated similarity percentages for each word pair. Here is an example of the output format:
 
 ```
-Row 1: hello world ~ Row 2: apple orange banana | Similarity: 01.01%
+Row 1: hello world   Row 2: apple orange banana Similarity: 01.01%
 ```
 
 ## Contributing
